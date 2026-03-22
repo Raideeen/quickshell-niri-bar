@@ -18,8 +18,6 @@ PanelWindow {
       right: 25
     }
 
-    color: "transparent"
-
     Rectangle {
         anchors.fill: parent
         color: Theme.colBg 
