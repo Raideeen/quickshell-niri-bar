@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import qs.modules.common
 
 Rectangle {
   anchors {
@@ -7,5 +8,5 @@ Rectangle {
   }
   width: 2
   height: 16
-  color: Theme.colMuted
+  color: Config.colMuted
 }

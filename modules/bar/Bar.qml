@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import qs.modules.common
 
 PanelWindow {
     id: bar
@@ -10,7 +11,7 @@ PanelWindow {
         right: true
     }
 
-    implicitHeight: 30
+    implicitHeight: Config.barSize
 
     margins {
       top: 10
@@ -20,12 +21,12 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        color: Theme.colBg 
+        color: Config.colBg 
         // left
         RowLayout {
             anchors {
-                left: parent.left
-                leftMargin: 25
+              left: parent.left 
+              leftMargin: 25
             }
             // Loader { active: true; sourceComponent: Workspaces {} }
         }
@@ -37,16 +38,11 @@ PanelWindow {
                 verticalCenter: parent.verticalCenter
             }
 
-            Text {
-                text: niri.focusedWindow?.title ?? ""
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSize
-                color: Theme.colFg
+            // Focused Window
+            FocusedWindow {
+              Layout.maximumWidth: 400
+            }
 
-                // Trim text that is too long
-                Layout.maximumWidth: 400
-                elide: Text.ElideRight
-              }
         }
 
         // right
@@ -58,8 +54,8 @@ PanelWindow {
             }
             spacing: 10
             // Loader { active: true; sourceComponent: SystemTray {} }
-            Loader { active: true; sourceComponent: Spacer {} }
-            Loader { active: true; sourceComponent: Memory {} }
+
+            Loader { active: true; sourceComponent: RAM {} }
             Loader { active: true; sourceComponent: Spacer {} }
             Loader { active: true; sourceComponent: Time {} }
         }

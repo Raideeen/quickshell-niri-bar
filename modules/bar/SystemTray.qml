@@ -4,7 +4,6 @@ import QtQuick
 import Quickshell
 import Quickshell.Services.SystemTray
 
-
 Row {
     spacing: 5
 

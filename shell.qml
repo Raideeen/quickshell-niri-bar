@@ -4,6 +4,7 @@ import Quickshell
 import Quickshell.Wayland
 import Niri 0.1
 import "./modules/bar/"
+import "./modules/utils"
 
 ShellRoot{
     id: root
@@ -18,5 +19,6 @@ ShellRoot{
         }
     }
 
+    // Configurations are located at ./modules/bar/Theme.qml
     LazyLoader{ active: true; component: Bar{} }
 }
