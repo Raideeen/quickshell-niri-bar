@@ -44,7 +44,7 @@ Singleton {
     }
 
     FileView {
-        id: meminfoFile
+        id: memInfoFile
         path: "/proc/meminfo"
         onLoadFailed: function(error) {
             console.log("RAM Service: FileView load failed for /proc/meminfo:", error);
@@ -63,8 +63,8 @@ Singleton {
     }
 
     function updateRamStats() {
-        meminfoFile.reload();
-        let content = meminfoFile.text();
+        memInfoFile.reload();
+        let content = memInfoFile.text();
 
         if (content === "") return;
 

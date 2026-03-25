@@ -11,17 +11,28 @@ Item {
     id: root
 
     property real scale: Config.ramScale || 1.0
+    property real graphTextMargin: 5
+    property real textIconMargin: 2 
 
     implicitWidth: (icon.visible ? icon.width : 0)
-        + (graph.visible ? graph.width : 0) + 4
+        + (graph.visible ? graph.width : 0) + (quickIndicator.visible ? quickIndicator.width : 0) + 4 + graphTextMargin
     implicitHeight: Config.barSize - Config.barSize * 0.2
 
-    RAMIcon {
-        id: icon
-        visible: Config.ramIconEnabled
-        color: Config.ramIconColor
-        scale: Config.ramIconScale * root.height
-        anchors.verticalCenter: parent.verticalCenter
+    RowLayout {
+      RAMIcon {
+          id: icon
+          visible: Config.ramIconEnabled
+          color: Config.ramIconColor
+          scale: Config.ramIconScale * root.height
+          Layout.alignment: Qt.AlignVCenter
+      }
+    
+      Text {
+        id: quickIndicator
+        visible: Config.ramQuickIndicatorEnabled
+        text: "Hello"
+        color: Config.colWhite
+      }
     }
 
     Canvas {
@@ -31,6 +42,8 @@ Item {
             top: parent.top
             bottom: parent.bottom
             right: parent.right
+            left: quickIndicator.visible ? quickIndicator.right : parent.left
+            leftMargin: quickIndicator.visible ? graphTextMargin : 0
         }
         width: 100 * root.scale
 
@@ -71,7 +84,7 @@ Item {
                 cumulativeX += buffersCachedRatio * width;
             }
             if (freeRatio > 0) {
-                ctx.fillStyle = Config.MenuFreeColor;
+                ctx.fillStyle = Config.ramMenuFreeColor;
                 ctx.fillRect(cumulativeX, 0, freeRatio * width, height);
             }
         }
