@@ -22,7 +22,7 @@ Singleton {
     property var loadAvg: []
 
     // Number of top processes to show
-    property int numTopProcesses: Config.data.cpu.numTopProcesses || 5
+    property int numTopProcesses: Config.cpuNumTopProcesses || 5
 
     Process {
         id: psProc
@@ -73,7 +73,7 @@ Singleton {
     }
 
     Timer {
-        interval: Config.data.cpu.updateInterval
+        interval: Config.cpuUpdateInterval
         running: true
         repeat: true
         triggeredOnStart: true

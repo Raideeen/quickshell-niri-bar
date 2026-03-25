@@ -55,6 +55,8 @@ PanelWindow {
             spacing: 10
             // Loader { active: true; sourceComponent: SystemTray {} }
 
+            Loader { active: true; sourceComponent: CPU {} }
+            Loader { active: true; sourceComponent: Spacer {} }
             Loader { active: true; sourceComponent: RAM {} }
             Loader { active: true; sourceComponent: Spacer {} }
             Loader { active: true; sourceComponent: Time {} }
