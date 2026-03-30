@@ -65,7 +65,7 @@ Singleton {
 
   property bool ramQuickIndicatorEnabled       : true
 
-  property bool ramGraphEnabled                : true
+  property bool ramGraphEnabled                : false
 
   property color ramMenuUsedColor              : colBrightBlue
   property color ramMenuSharedColor            : colBlue

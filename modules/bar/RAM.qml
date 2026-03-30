@@ -19,6 +19,7 @@ Item {
     implicitHeight: Config.barSize - Config.barSize * 0.2
 
     RowLayout {
+      spacing: 8
       RAMIcon {
           id: icon
           visible: Config.ramIconEnabled
@@ -30,7 +31,12 @@ Item {
       Text {
         id: quickIndicator
         visible: Config.ramQuickIndicatorEnabled
-        text: "Hello"
+        text: {
+          let ramUsed  = FileUtils.convertSizeUnit(RAM.used, "KiB", "GiB").toPrecision(2)
+          let ramTotal = FileUtils.convertSizeUnit(RAM.total, "KiB", "GiB").toPrecision(2)
+
+          return ramUsed + " GiB/" + ramTotal + " GiB"
+        } 
         color: Config.colWhite
       }
     }
@@ -42,7 +48,6 @@ Item {
             top: parent.top
             bottom: parent.bottom
             right: parent.right
-            left: quickIndicator.visible ? quickIndicator.right : parent.left
             leftMargin: quickIndicator.visible ? graphTextMargin : 0
         }
         width: 100 * root.scale
