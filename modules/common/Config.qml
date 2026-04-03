@@ -47,7 +47,10 @@ Singleton {
   property real cpuIconScale                   : 0.85
   property color cpuIconColor                  : colFg
 
+  property bool cpuQuickIndicatorEnabled       : true
+
   property bool cpuGraphEnabled                : true
+  property int  cpuCoreCanvasHeight            : 10
   property real cpuGraphHistory                : 30 // Seconds
   property color cpuGraphLineColor             : colFg
   property color cpuGraphLowUsageColor         : colBrightBlue
