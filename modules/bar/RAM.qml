@@ -14,8 +14,11 @@ Item {
     property real graphTextMargin: 5
     property real textIconMargin: 2 
 
-    implicitWidth: (icon.visible ? icon.width : 0)
-        + (graph.visible ? graph.width : 0) + (quickIndicator.visible ? quickIndicator.width : 0) + 4 + graphTextMargin
+    implicitWidth: (icon.visible ? icon.width : 0) +
+                   (graph.visible ? graph.width : 0) + 
+                   (quickIndicator.visible ? quickIndicator.width : 0) +
+                   (graphTextMargin)
+                   + 4
     implicitHeight: Config.barSize - Config.barSize * 0.2
 
     RowLayout {
