@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
 import Quickshell
-import Quickshell.Io
 import Quickshell.Wayland
 import qs.modules.common
 
@@ -13,8 +12,6 @@ Item {
   property bool shouldShow: false
   // Generic content to display in the popup
   property Component contentComponent: null
-  // Generic process to open when clicking the widget
-  property Process onClickAction: null
 
   width: hoverTarget ? hoverTarget.width : 0
   height: hoverTarget ? hoverTarget.height : 0
@@ -22,29 +19,12 @@ Item {
   MouseArea {
     id: mouseArea
     anchors.fill: parent
-    hoverEnabled: true
     cursorShape: Qt.PointingHandCursor
-    onEntered: root.onHoveredEntered()
-    onExited: root.onHoveredExited()
-    onClicked: {
-      if (!onClickAction) return;
-      onClickAction.running = true;
-    }
+    onClicked: root.toggle()
   }
 
-  Timer {
-    id: popupTimer
-    interval: 500
-    onTriggered: root.open()
-  }
-
-  function onHoveredEntered() {
-    popupTimer.start()
-  }
-
-  function onHoveredExited() {
-    popupTimer.stop()
-    root.close()
+  function toggle() {
+    shouldShow = !shouldShow
   }
 
   function open() {
@@ -77,14 +57,14 @@ Item {
             root,
             (root.width - contentRect.implicitWidth)/2, 0
           )
-          return mapped.x
+          return mapped.x + Config.barMarginLeft
         }
         top: Config.barSize + Config.barMarginTop
       }
 
       exclusionMode: ExclusionMode.Ignore
       exclusiveZone: 0
-      WlrLayershell.namespace: "quickshell:hover-popup"
+      WlrLayershell.namespace: "quickshell:toggle-window"
       WlrLayershell.layer: WlrLayer.Top
 
       Rectangle {

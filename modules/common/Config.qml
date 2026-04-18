@@ -4,10 +4,16 @@ import QtQuick
 
 Singleton {
   // Bar
-  readonly property int barSize                : 30
-  readonly property int barMarginTop           : 10
+  readonly property int barSize                   : 30
+  readonly property int barMarginTop              : 10
+  readonly property int barMarginLeft             : 25
+  readonly property int barMarginRight            : 25
+  readonly property int barPaddingRight           : 10
+  readonly property int barPaddingLeft            : 10
+  readonly property int barModuleSpacing          : 10
+  readonly property real barContentHeight         : barSize - barSize * 0.2
 
-  // Colors 
+  // Colors
   readonly property color colBg                : "#141414"
   readonly property color colFg                : "#BAB7B6"
 
@@ -37,6 +43,13 @@ Singleton {
 
   readonly property string fontFamilyMono      : "Monospace"
   readonly property real fontSizeMono          : 14
+
+  // Sound Module Configuration
+  property real soundScale                     : 5
+
+  property real soundIconScale                 : 0.85
+  property bool soundIconEnabled               : true
+  property color soundIconColor                : colFg
 
   // CPU Module Configuration
   property int cpuNumTopProcesses              : 5
@@ -74,4 +87,15 @@ Singleton {
   property color ramMenuSharedColor            : colBlue
   property color ramMenuBuffersCachedColor     : colMagenta
   property color ramMenuFreeColor              : colWhite
+
+  // SysTray Module Configuration
+  property int trayIconSize : 16
+
+  // Power Module Configuration
+  property real powerScale                     : 5
+
+  property real powerIconScale                 : 0.75
+  property bool powerIconEnabled               : true
+  property color powerIconColor                : colFg
+
 }

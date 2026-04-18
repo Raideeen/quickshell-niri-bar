@@ -1,3 +1,5 @@
+//@ pragma UseQApplication
+//@ pragma IconTheme Papirus-Light
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -7,18 +9,18 @@ import "./modules/bar/"
 import "./modules/utils"
 
 ShellRoot{
-    id: root
+  id: root
 
-    Niri {
-        id: niri
-        Component.onCompleted: connect()
+  Niri {
+    id: niri
+    Component.onCompleted: connect()
 
-        onConnected: console.info("Connected to niri")
-        onErrorOccurred: function(error) {
-            console.error("Niri error:", error)
-        }
+    onConnected: console.info("Connected to niri")
+    onErrorOccurred: function(error) {
+      console.error("Niri error:", error)
     }
+  }
 
-    // Configurations are located at ./modules/bar/Theme.qml
-    LazyLoader{ active: true; component: Bar{} }
+  // Configurations are located at ./modules/bar/Theme.qml
+  LazyLoader{ active: true; component: Bar{} }
 }
