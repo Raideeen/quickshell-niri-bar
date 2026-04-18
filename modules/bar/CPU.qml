@@ -43,7 +43,7 @@ Item {
     w += (visibleCount - 1) * iconText.spacing;
     return w;
   }
-  implicitHeight: Config.barSize - Config.barSize * 0.2
+  implicitHeight: Config.barContentHeight
 
   // Buffer for graph points (rolling window)
   property var points: []

@@ -20,7 +20,7 @@ Item {
   (quickIndicator.visible ? quickIndicator.width : 0) +
   (graphTextMargin)
   + 4
-  implicitHeight: Config.barSize - Config.barSize * 0.2
+  implicitHeight: Config.barContentHeight
 
   RowLayout {
     spacing: 8

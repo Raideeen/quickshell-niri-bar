@@ -16,7 +16,7 @@ Item {
     if (shutdownButtonBar.visible) { w+= shutdownButtonBar.implicitWidth; visibleCount++ }
     return w;
   }
-  implicitHeight: Config.barSize - Config.barSize * 0.2
+  implicitHeight: Config.barContentHeight
 
   Process { id: shutdownProc}
   Process { id: restartProc }

@@ -15,7 +15,7 @@ Item {
     if (rowLayout.visible) { w+= rowLayout.implicitWidth; visibleCount++ }
     return w;
   }
-  implicitHeight: Config.barSize - Config.barSize * 0.2
+  implicitHeight: Config.barContentHeight
 
   RowLayout {
     id: rowLayout

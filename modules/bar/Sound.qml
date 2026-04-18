@@ -22,7 +22,7 @@ Item {
   readonly property var sink: Pipewire.defaultAudioSink ?? lastSink
 
   implicitWidth: (Config.soundIconEnabled ? icon.width : 0)+ fm.boundingRect("100%").width + iconLayout.spacing
-  implicitHeight: Config.barSize - Config.barSize * 0.2
+  implicitHeight: Config.barContentHeight
 
   PwObjectTracker {
     objects: [root.sink]
